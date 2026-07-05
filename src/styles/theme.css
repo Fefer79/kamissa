@@ -1,0 +1,382 @@
+/* KAMISSA — thème. Source : charte docs/KAMISSA_Logo_Declinaisons.html.
+   Cible : écrans 360×640, tactile enfant → cibles ≥ 72 px, zéro texte requis (C1, C3). */
+
+@font-face {
+  font-family: 'Baloo 2';
+  src: url('/fonts/baloo2-latin.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('/fonts/lexend-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --indigo: #2e3d96;
+  --corail: #e8482b;
+  --soleil: #ffb81c;
+  --manguier: #1fa05c;
+  --karite: #fdf8ef;
+  --sable: #ede4d3;
+  --encre: #241e16;
+  --douce: #6b6053;
+  --titres: 'Baloo 2', system-ui, sans-serif;
+  --texte: 'Lexend', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body,
+#app {
+  height: 100%;
+}
+body {
+  background: var(--karite);
+  color: var(--encre);
+  font-family: var(--texte);
+  user-select: none;
+  -webkit-user-select: none;
+}
+button {
+  font: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* ---------- structure d'écran ---------- */
+.ecran {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  /* padding haut : réserve la zone des boutons flottants (retour, en-tête profil) */
+  padding: 88px 20px calc(24px + env(safe-area-inset-bottom));
+}
+
+/* ---------- logo ---------- */
+.logo-mot {
+  font-family: var(--titres);
+  font-weight: 800;
+  font-size: 44px;
+  color: var(--indigo);
+  letter-spacing: 1px;
+}
+.logo-mot span {
+  color: var(--corail);
+}
+.devise {
+  color: var(--douce);
+  font-style: italic;
+  margin-top: -18px;
+}
+
+/* ---------- boutons ---------- */
+.btn-principal {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--corail);
+  color: #fff;
+  font-size: 40px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 0 rgba(36, 30, 22, 0.18);
+}
+.btn-principal.grand {
+  width: 120px;
+  height: 120px;
+  font-size: 52px;
+}
+.btn-principal:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(36, 30, 22, 0.18);
+}
+.btn-secondaire {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--sable);
+  font-size: 30px;
+  display: grid;
+  place-items: center;
+}
+.btn-retour {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--sable);
+  font-size: 22px;
+  color: var(--douce);
+}
+.btn-rejouer {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--indigo);
+  font-size: 30px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 0 rgba(36, 30, 22, 0.18);
+}
+.rangee-boutons {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* ---------- profils ---------- */
+.grille-profils {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 150px));
+  gap: 16px;
+}
+.carte-profil {
+  background: #fff;
+  border: 3px solid var(--sable);
+  border-radius: 24px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-height: 110px;
+}
+.carte-profil:active {
+  border-color: var(--soleil);
+}
+.carte-profil .avatar {
+  font-size: 48px;
+  line-height: 1;
+}
+.carte-profil .prenom {
+  font-family: var(--titres);
+  font-weight: 700;
+  color: var(--indigo);
+}
+.carte-profil.nouveau {
+  border-style: dashed;
+  color: var(--douce);
+  justify-content: center;
+}
+.avatar-grand {
+  font-size: 72px;
+  line-height: 1;
+}
+
+/* ---------- code visuel ---------- */
+.slots-code {
+  display: flex;
+  gap: 14px;
+}
+.slot {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  border: 3px dashed var(--sable);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+}
+.slot.rempli {
+  border-style: solid;
+  border-color: var(--manguier);
+}
+.slots-code.erreur .slot {
+  border-color: var(--corail);
+  animation: secoue 0.4s;
+}
+
+/* ---------- exercices ---------- */
+.exercice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-height: 140px;
+  justify-content: center;
+}
+.grande-lettre {
+  font-family: var(--titres);
+  font-weight: 800;
+  font-size: 110px;
+  line-height: 1;
+  color: var(--indigo);
+}
+.grande-illustration {
+  font-size: 92px;
+  line-height: 1;
+}
+.grille-choix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+.grille-choix.large {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 340px;
+}
+.carte-choix {
+  background: #fff;
+  border: 3px solid var(--sable);
+  border-radius: 24px;
+  min-height: 110px;
+  font-size: 54px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.15s;
+}
+.carte-choix .lettre {
+  font-family: var(--titres);
+  font-weight: 800;
+  font-size: 60px;
+  color: var(--indigo);
+}
+.carte-choix.juste {
+  border-color: var(--manguier);
+  background: #e9f7ef;
+  animation: pop 0.35s;
+}
+.carte-choix.faux {
+  border-color: var(--corail);
+  opacity: 0.45;
+  animation: secoue 0.4s;
+}
+
+/* ---------- session ---------- */
+.session {
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+.points-progression {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.point {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sable);
+}
+.point.fait {
+  background: var(--manguier);
+}
+.point.actif {
+  background: var(--soleil);
+  transform: scale(1.25);
+}
+
+/* ---------- accueil & compagnon ---------- */
+.entete-profil {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.entete-profil .avatar {
+  font-size: 36px;
+}
+.entete-profil .prenom {
+  font-family: var(--titres);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--indigo);
+}
+/* Dans l'en-tête, le bouton retour suit le flux (sinon il s'ancre en absolu dans l'en-tête). */
+.entete-profil .btn-retour {
+  position: static;
+  margin-left: 8px;
+}
+.compagnon {
+  width: min(58vw, 240px);
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(36, 30, 22, 0.14);
+}
+
+/* ---------- célébration ---------- */
+.etoiles {
+  font-size: 52px;
+  animation: pop 0.6s;
+}
+.celebration.reussi .compagnon {
+  animation: pop 0.6s;
+}
+
+/* ---------- création : prénom (assistée par le champion) ---------- */
+.aide-champion {
+  color: var(--douce);
+  font-size: 15px;
+}
+.champ-prenom {
+  font-family: var(--titres);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--indigo);
+  text-align: center;
+  background: #fff;
+  border: 3px solid var(--sable);
+  border-radius: 18px;
+  padding: 12px 16px;
+  width: min(80vw, 300px);
+  outline: none;
+}
+.champ-prenom:focus {
+  border-color: var(--soleil);
+}
+
+/* ---------- animations ---------- */
+@keyframes secoue {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "kamissa",
+  "private": true,
+  "version": "0.1.0",
+  "description": "kamissa — l'école dans la poche. PWA d'alphabétisation autonome pour enfants hors du système scolaire.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dexie": "^4",
+    "preact": "^10"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2",
+    "typescript": "^5",
+    "vite": "^7",
+    "vite-plugin-pwa": "^1"
+  }
+}

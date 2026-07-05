@@ -1,0 +1,83 @@
+{
+  "moduleId": "n1-sons-a",
+  "skillId": "phoneme-a",
+  "titre": "Le son a",
+  "seuilMaitrise": 0.8,
+  "etapes": [
+    {
+      "type": "ecoute",
+      "voix": { "audio": "n1-sons-a/intro.opus", "tts": "Bonjour ! Aujourd'hui, on apprend le son aaa. Écoute bien : aaa !" },
+      "illustration": "👂"
+    },
+    {
+      "type": "ecoute",
+      "voix": { "audio": "n1-sons-a/lettre.opus", "tts": "Voici la lettre a. Elle chante : aaa. Regarde-la bien !" },
+      "lettre": "Aa"
+    },
+    {
+      "type": "association",
+      "voix": { "audio": "n1-sons-a/touche-a-1.opus", "tts": "Touche la lettre qui chante aaa !" },
+      "choix": [
+        { "id": "a", "lettre": "a" },
+        { "id": "o", "lettre": "o" },
+        { "id": "i", "lettre": "i" }
+      ],
+      "bonneReponse": "a"
+    },
+    {
+      "type": "discrimination",
+      "voix": { "audio": "n1-sons-a/avion.opus", "tts": "Écoute : aaa-vion, avion ! Touche l'image où tu entends aaa au début." },
+      "choix": [
+        { "id": "avion", "emoji": "✈️" },
+        { "id": "velo", "emoji": "🚲" },
+        { "id": "mouton", "emoji": "🐑" }
+      ],
+      "bonneReponse": "avion"
+    },
+    {
+      "type": "discrimination",
+      "voix": { "audio": "n1-sons-a/ananas.opus", "tts": "Écoute bien : a-na-nas, ananas ! Touche l'image qui commence par aaa." },
+      "choix": [
+        { "id": "ananas", "emoji": "🍍" },
+        { "id": "balai", "emoji": "🧹" },
+        { "id": "chapeau", "emoji": "👒" }
+      ],
+      "bonneReponse": "ananas"
+    },
+    {
+      "type": "association",
+      "voix": { "audio": "n1-sons-a/touche-a-2.opus", "tts": "Encore une fois : touche la lettre a !" },
+      "choix": [
+        { "id": "e", "lettre": "e" },
+        { "id": "a", "lettre": "a" },
+        { "id": "u", "lettre": "u" }
+      ],
+      "bonneReponse": "a"
+    },
+    {
+      "type": "choix-image",
+      "voix": { "audio": "n1-sons-a/arbre.opus", "tts": "Touche l'arbre ! Écoute : aaa, arbre !" },
+      "choix": [
+        { "id": "arbre", "emoji": "🌳" },
+        { "id": "tambour", "emoji": "🥁" },
+        { "id": "poisson", "emoji": "🐟" }
+      ],
+      "bonneReponse": "arbre"
+    },
+    {
+      "type": "discrimination",
+      "voix": { "audio": "n1-sons-a/abeille.opus", "tts": "Dernière question ! Écoute : a-beille, abeille ! Touche l'image où tu entends aaa au début." },
+      "choix": [
+        { "id": "abeille", "emoji": "🐝" },
+        { "id": "banane", "emoji": "🍌" },
+        { "id": "lune", "emoji": "🌙" }
+      ],
+      "bonneReponse": "abeille"
+    },
+    {
+      "type": "ecoute",
+      "voix": { "audio": "n1-sons-a/fin.opus", "tts": "Tu as très bien travaillé ! À bientôt !" },
+      "illustration": "🌟"
+    }
+  ]
+}
