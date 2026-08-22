@@ -6,3 +6,8 @@ dev-dist/
 .gstack/
 tools/audio/.venv/
 tools/audio/__pycache__/
+
+# Échantillons de voix candidats : seul ref-b.wav, la voix du corpus livré,
+# est versionné — le manifeste audio en donne l'empreinte.
+tools/audio/reference/*.wav
+!tools/audio/reference/ref-b.wav
