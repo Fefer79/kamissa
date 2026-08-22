@@ -1,6 +1,51 @@
 {
   "debit": "24k",
   "fichiers": {
+    "n1-sons-a/abeille.opus": {
+      "duree_s": 4.32,
+      "genere_le": "2026-08-22T15:14:49Z",
+      "sha256_texte": "b5d07132bef07782fb8a66151bacf50a83c19ad38dad5af1c642f037eb2a86d4"
+    },
+    "n1-sons-a/ananas.opus": {
+      "duree_s": 3.24,
+      "genere_le": "2026-08-22T15:11:20Z",
+      "sha256_texte": "6d47efc6734a0f8015cae230423cb67dda1d7dc226bb224339ad5d8c7943510e"
+    },
+    "n1-sons-a/arbre.opus": {
+      "duree_s": 2.28,
+      "genere_le": "2026-08-22T15:13:08Z",
+      "sha256_texte": "d6576b54b4c86ac60ffae8128af4b6265a865585ad22bba88a9f6d478fe69853"
+    },
+    "n1-sons-a/avion.opus": {
+      "duree_s": 4.52,
+      "genere_le": "2026-08-22T15:10:17Z",
+      "sha256_texte": "1b8b0f87be21b038d271c504fbd412ecd1b4a430b87bcb2e3aac61fe91fd2382"
+    },
+    "n1-sons-a/fin.opus": {
+      "duree_s": 3.6,
+      "genere_le": "2026-08-22T15:15:44Z",
+      "sha256_texte": "178ff4f6d6fa62873928eb312521a2867b6541320dfe1643856cf875f5184f24"
+    },
+    "n1-sons-a/intro.opus": {
+      "duree_s": 3.76,
+      "genere_le": "2026-08-22T15:05:34Z",
+      "sha256_texte": "e24da3e24965fc7aa7d961ac864e3235c38c85d264d51e46b00ac9c0c74d8965"
+    },
+    "n1-sons-a/lettre.opus": {
+      "duree_s": 3.92,
+      "genere_le": "2026-08-22T15:07:41Z",
+      "sha256_texte": "cf02cf35a05c0055d4248cea418ab11a6ba91f7dce75d0918f53d1543fc779a8"
+    },
+    "n1-sons-a/touche-a-1.opus": {
+      "duree_s": 2.44,
+      "genere_le": "2026-08-22T15:08:42Z",
+      "sha256_texte": "9cf5caf695f2c255c2cf093b88eb986b48a29c954cd0b68fbfc6bb311d386181"
+    },
+    "n1-sons-a/touche-a-2.opus": {
+      "duree_s": 3.44,
+      "genere_le": "2026-08-22T15:12:20Z",
+      "sha256_texte": "b22b8d1e4069f2b72b951bf0a6172191b877b89168f80cba280f4bfcb7c4fedb"
+    },
     "ui/accueil-bonjour.opus": {
       "genere_le": "2026-08-22T11:47:26Z",
       "sha256_texte": "31e57226468bd5bf22a7b12fb5bb151b29eee061c6afa0b4abd46bc0f25242fd"
