@@ -2,24 +2,24 @@
   "debit": "24k",
   "fichiers": {
     "n1-sons-a/abeille.opus": {
-      "duree_s": 4.32,
-      "genere_le": "2026-08-22T15:14:49Z",
-      "sha256_texte": "b5d07132bef07782fb8a66151bacf50a83c19ad38dad5af1c642f037eb2a86d4"
+      "duree_s": 4.16,
+      "genere_le": "2026-08-22T15:30:07Z",
+      "sha256_texte": "25ed8ecdd20a0a6827baf6edb4796608446ad5b5879b3e781b880f4f347026e7"
     },
     "n1-sons-a/ananas.opus": {
-      "duree_s": 3.24,
-      "genere_le": "2026-08-22T15:11:20Z",
-      "sha256_texte": "6d47efc6734a0f8015cae230423cb67dda1d7dc226bb224339ad5d8c7943510e"
+      "duree_s": 4.44,
+      "genere_le": "2026-08-22T15:28:37Z",
+      "sha256_texte": "730cb81f03b837e01dcc7e1beb6c37657af76ce3bc7aba3a7bc966c983c1fcd6"
     },
     "n1-sons-a/arbre.opus": {
-      "duree_s": 2.28,
-      "genere_le": "2026-08-22T15:13:08Z",
-      "sha256_texte": "d6576b54b4c86ac60ffae8128af4b6265a865585ad22bba88a9f6d478fe69853"
+      "duree_s": 3.28,
+      "genere_le": "2026-08-22T15:29:17Z",
+      "sha256_texte": "48ec9559937ae64789359640066979e9e12878d78a3cd9333af067b40c17c3f9"
     },
     "n1-sons-a/avion.opus": {
-      "duree_s": 4.52,
-      "genere_le": "2026-08-22T15:10:17Z",
-      "sha256_texte": "1b8b0f87be21b038d271c504fbd412ecd1b4a430b87bcb2e3aac61fe91fd2382"
+      "duree_s": 3.84,
+      "genere_le": "2026-08-22T15:27:44Z",
+      "sha256_texte": "c23a0bf4d415faaa4a22f08cb3251fe9e5cb49e617d72b5db9b8e82600418d0d"
     },
     "n1-sons-a/fin.opus": {
       "duree_s": 3.6,
@@ -27,19 +27,19 @@
       "sha256_texte": "178ff4f6d6fa62873928eb312521a2867b6541320dfe1643856cf875f5184f24"
     },
     "n1-sons-a/intro.opus": {
-      "duree_s": 3.76,
-      "genere_le": "2026-08-22T15:05:34Z",
-      "sha256_texte": "e24da3e24965fc7aa7d961ac864e3235c38c85d264d51e46b00ac9c0c74d8965"
+      "duree_s": 2.96,
+      "genere_le": "2026-08-22T15:25:05Z",
+      "sha256_texte": "e97f81e6c87a40642f3916a1ca95e9c0092c3005bf1ae0a0b7503389e53b7d2e"
     },
     "n1-sons-a/lettre.opus": {
-      "duree_s": 3.92,
-      "genere_le": "2026-08-22T15:07:41Z",
-      "sha256_texte": "cf02cf35a05c0055d4248cea418ab11a6ba91f7dce75d0918f53d1543fc779a8"
+      "duree_s": 4.56,
+      "genere_le": "2026-08-22T15:26:14Z",
+      "sha256_texte": "3b5a2d378c47334476c3951eba9e372aecff86680672356826b74e5cc166ea5d"
     },
     "n1-sons-a/touche-a-1.opus": {
-      "duree_s": 2.44,
-      "genere_le": "2026-08-22T15:08:42Z",
-      "sha256_texte": "9cf5caf695f2c255c2cf093b88eb986b48a29c954cd0b68fbfc6bb311d386181"
+      "duree_s": 3.52,
+      "genere_le": "2026-08-22T15:26:58Z",
+      "sha256_texte": "8b7e14f39c88a21fdd9fe7856670812011abda7f8e1d6be5e6547a7f679424c2"
     },
     "n1-sons-a/touche-a-2.opus": {
       "duree_s": 3.44,

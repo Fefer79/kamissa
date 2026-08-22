@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -60,6 +61,23 @@ def empreinte_fichier(chemin: Path) -> str:
 # ~0,075 s par caractère en français ; on laisse 50 % de marge plus une amorce.
 def duree_plafond(texte: str) -> float:
     return 1.5 + 0.11 * len(texte)
+
+
+# Une lettre répétée pour figurer un son tenu (« le son aaa ») ne se prononce
+# pas tenue : le modèle dit trois « a » détachés. L'enfant apprend alors à
+# reconnaître trois sons là où on lui en enseigne un — l'inverse de la leçon.
+# Aucun mot français ne porte trois lettres identiques d'affilée : on refuse.
+LETTRE_REPETEE = re.compile(r"([A-Za-zÀ-ÖØ-öø-ÿ])\1{2}")
+
+
+def controler_textes(taches: list[tuple[Path, str]]) -> None:
+    fautifs = [(c, t, m.group(0)) for c, t in taches if (m := LETTRE_REPETEE.search(t))]
+    if not fautifs:
+        return
+    print("Lettres répétées dans le texte parlé — le modèle les détache au lieu de les tenir :")
+    for cible, texte, faute in fautifs:
+        print(f"  {cible.relative_to(SORTIE)} : « {faute} » dans « {texte} »")
+    sys.exit("Écrivez la lettre une seule fois (« le son a »), puis relancez.")
 
 
 def trouver_ffmpeg() -> str:
@@ -162,6 +180,8 @@ def main() -> None:
         for cle in inconnus:
             print(f"     {cle}")
         print("   --force les régénérera et rendra le corpus vérifiable.")
+
+    controler_textes(toutes)
 
     if not taches:
         print("Rien à faire : tout est à jour (--force pour régénérer).")
