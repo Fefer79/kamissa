@@ -5,6 +5,7 @@ import { useEffect } from 'preact/hooks'
 import { audio } from '../audio'
 import type { Profil } from '../db'
 import { Compagnon } from '../components/Companion'
+import { voix } from '../voix'
 
 interface Props {
   profil: Profil
@@ -17,11 +18,7 @@ interface Props {
 
 export function Celebration({ profil, reussi, etage, onRejouer, onAccueil }: Props) {
   useEffect(() => {
-    audio.dire({
-      tts: reussi
-        ? `Bravo ${profil.prenom} ! Tu connais le son aaa ! Ton manguier grandit !`
-        : `C'est bien ${profil.prenom} ! On va réessayer ensemble, tu vas y arriver.`,
-    })
+    audio.dire(voix(reussi ? 'celebration-reussi' : 'celebration-encore'))
     return () => audio.stop()
   }, [])
 

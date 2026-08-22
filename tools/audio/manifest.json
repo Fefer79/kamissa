@@ -1,0 +1,150 @@
+{
+  "debit": "24k",
+  "fichiers": {
+    "ui/accueil-bonjour.opus": {
+      "genere_le": "2026-08-22T11:47:26Z",
+      "sha256_texte": "31e57226468bd5bf22a7b12fb5bb151b29eee061c6afa0b4abd46bc0f25242fd"
+    },
+    "ui/accueil-erreur.opus": {
+      "genere_le": "2026-08-22T11:47:58Z",
+      "sha256_texte": "6785e5150dcaa585cc31403a90aac6619c1b886771a60bbd5c2f1519e3959d52"
+    },
+    "ui/avatar-abeille.opus": {
+      "genere_le": "2026-08-22T11:41:02Z",
+      "sha256_texte": "6a7cc530646c1f7d70ea976efbb11b25c4af957fd055e35cccdf9cf89eb3829e"
+    },
+    "ui/avatar-chevre.opus": {
+      "genere_le": "2026-08-22T11:41:41Z",
+      "sha256_texte": "f2b90ec3155433aa3c88e8866cae2677c02138bcb3ae7b71b52fd10e97f04895"
+    },
+    "ui/avatar-elephant.opus": {
+      "genere_le": "2026-08-22T11:36:44Z",
+      "sha256_texte": "89c4b9da329d5dfdc2a8f71b8bc3db1e4fa7da58624b254edea2d7ba0ab2b264"
+    },
+    "ui/avatar-lion.opus": {
+      "genere_le": "2026-08-22T11:37:28Z",
+      "sha256_texte": "a398472a4c5c33bd0f2bdaad24e116aa798d242ef962e019baf6ef8fea85a279"
+    },
+    "ui/avatar-oiseau.opus": {
+      "genere_le": "2026-08-22T11:38:07Z",
+      "sha256_texte": "637b861160a705aa22b138893baf4d3d870c1af69f12ca2a0991eed88dea9530"
+    },
+    "ui/avatar-papillon.opus": {
+      "genere_le": "2026-08-22T11:39:41Z",
+      "sha256_texte": "a4ecaf11bee87368e0e114fc09eb5ba4d9886827b7f841db46b23a5bf1625481"
+    },
+    "ui/avatar-poisson.opus": {
+      "genere_le": "2026-08-22T11:38:58Z",
+      "sha256_texte": "cc032907d8ebb4fb5f077fb3e553c58daedc78bf6ef68f60dd29d53442e027e8"
+    },
+    "ui/avatar-tortue.opus": {
+      "genere_le": "2026-08-22T11:40:23Z",
+      "sha256_texte": "b8fb4f782ff681a9b05e7a525c8e5c41440582ba0aea8feea52c7dd9c07a78ca"
+    },
+    "ui/bravo-1.opus": {
+      "genere_le": "2026-08-22T11:48:23Z",
+      "sha256_texte": "0b43f9e781d494713960e29194d5a8160f06622646c8631112a46703450e33d7"
+    },
+    "ui/bravo-2.opus": {
+      "genere_le": "2026-08-22T11:48:53Z",
+      "sha256_texte": "fc0247a00bcda0913d3d702cf31704e5114858d1e42f3072869f9fe325dfc6c0"
+    },
+    "ui/bravo-3.opus": {
+      "duree_s": 1.52,
+      "genere_le": "2026-08-22T11:55:47Z",
+      "sha256_texte": "a95b389f0d27956fe30ee70af4092c896e68bda1f36b726d8649913d4466e08c"
+    },
+    "ui/celebration-encore.opus": {
+      "genere_le": "2026-08-22T11:51:53Z",
+      "sha256_texte": "ba697852d8a97020bc2fd94d9e324b0b62fb873cd6b5234e1f1749e17b62d19b"
+    },
+    "ui/celebration-reussi.opus": {
+      "genere_le": "2026-08-22T11:51:19Z",
+      "sha256_texte": "c7ea56de2bca07fbcf048fc99267bef501f77c920b97b9cbe8631540df787308"
+    },
+    "ui/code-bienvenue.opus": {
+      "genere_le": "2026-08-22T11:46:05Z",
+      "sha256_texte": "4a5e297bcb4e5b6b511fc4b89630c4a398afec6f92089b632bbcec6f66f8a44d"
+    },
+    "ui/code-consigne.opus": {
+      "genere_le": "2026-08-22T11:45:37Z",
+      "sha256_texte": "70d4164109048a5d7225c5ba56de9cecb0e580997372a41736501c2310309a89"
+    },
+    "ui/code-faux.opus": {
+      "genere_le": "2026-08-22T11:46:37Z",
+      "sha256_texte": "6f856583e75ce562fde3f2cf7ae1069e884377bef55e1f83afc65b4bfdfcf0c4"
+    },
+    "ui/creation-avatar.opus": {
+      "genere_le": "2026-08-22T11:32:03Z",
+      "sha256_texte": "a57ae2dbc87be638cf9f2c358d067aee1667995782cda2a8286069117c90df7a"
+    },
+    "ui/creation-code-fini.opus": {
+      "genere_le": "2026-08-22T11:34:15Z",
+      "sha256_texte": "1ecd66eeb9ec8c2db2d1af7228b063ff502ec95723735f59281df27a5d6c274c"
+    },
+    "ui/creation-code.opus": {
+      "genere_le": "2026-08-22T11:33:17Z",
+      "sha256_texte": "176f358f3b871eeafac3d514fc4783bb0a90e7c8dce7f48622024383d4c69374"
+    },
+    "ui/creation-erreur.opus": {
+      "genere_le": "2026-08-22T11:35:58Z",
+      "sha256_texte": "33b77c495c4931e9c3e78044bc40bfe8368ffb6f8caea0c48220b18f24f37ee5"
+    },
+    "ui/creation-prenom.opus": {
+      "genere_le": "2026-08-22T11:35:14Z",
+      "sha256_texte": "2463506fcc1e291e635dbc35fcc522e98111b491950a8cfd3dcc9ac0fe1dfb64"
+    },
+    "ui/essaie-1.opus": {
+      "genere_le": "2026-08-22T11:50:08Z",
+      "sha256_texte": "9a4bde7ec0e9b160def3d64c5b342332e79259150b1f5d9f19ed51325c471606"
+    },
+    "ui/essaie-2.opus": {
+      "genere_le": "2026-08-22T11:50:39Z",
+      "sha256_texte": "4d9dc8a8a6ae4854f9be36a5b0299acc4628a0bd6140efbf3e71d0066c3f4d11"
+    },
+    "ui/icone-etoile.opus": {
+      "genere_le": "2026-08-22T11:42:12Z",
+      "sha256_texte": "65e2bc0bdeeed2c88b1639f0e82284b7932be66c9b11df28ba038c9c66486f8d"
+    },
+    "ui/icone-fleur.opus": {
+      "genere_le": "2026-08-22T11:43:39Z",
+      "sha256_texte": "c61c1ca3dec0ccb50570ee32780ab8967e570b853755e347b7330ce6048e3301"
+    },
+    "ui/icone-lune.opus": {
+      "duree_s": 1.24,
+      "genere_le": "2026-08-22T11:55:25Z",
+      "sha256_texte": "5c7f5ab46b33a1a59d18b05c5e8e1dd6139554bf38c5e441b7dea59f90b36a65"
+    },
+    "ui/icone-mangue.opus": {
+      "duree_s": 0.92,
+      "genere_le": "2026-08-22T11:55:06Z",
+      "sha256_texte": "7a7b911d606aa4e0285c7ee06582311613e0d94c3d44bb5358e7e97a29c50c4b"
+    },
+    "ui/icone-soleil.opus": {
+      "genere_le": "2026-08-22T11:45:00Z",
+      "sha256_texte": "f95f1f173a45343438a52b38c1b6c39df09328503ce33534d4f5e11a10463e22"
+    },
+    "ui/icone-tambour.opus": {
+      "genere_le": "2026-08-22T11:44:34Z",
+      "sha256_texte": "a423c3e8df879f40658844856a86e5192d6fa12c11a37ab429e901912c3c7a9c"
+    },
+    "ui/profils-choisir.opus": {
+      "duree_s": 2.2,
+      "genere_le": "2026-08-22T11:54:48Z",
+      "sha256_texte": "ab1e799fdbbe937a0b8efc5d9d05af49149e12535ed5c7bae33f611630128f81"
+    },
+    "ui/profils-premier.opus": {
+      "genere_le": "2026-08-22T11:30:54Z",
+      "sha256_texte": "06797f1b3b7f91f50ec889e0726910d6f9c9204e3be3a8baeacaa361a0b1a446"
+    }
+  },
+  "versions": {
+    "chatterbox": "chatterbox-tts 0.1.6",
+    "torch": "2.2.2"
+  },
+  "voix": {
+    "langue": "fr",
+    "modele": "chatterbox-tts 0.1.6",
+    "reference": null
+  }
+}

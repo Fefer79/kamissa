@@ -2,7 +2,8 @@
 // on n'enferme jamais un enfant dehors, il peut réessayer sans limite.
 import { useEffect, useState } from 'preact/hooks'
 import { audio } from '../audio'
-import { avatarDe, ICONES_CODE, type Icone } from '../avatars'
+import { avatarDe, ICONES_CODE, type IconeCode } from '../avatars'
+import { voix } from '../voix'
 import type { Profil } from '../db'
 
 interface Props {
@@ -16,21 +17,21 @@ export function EntreeCode({ profil, onOk, onRetour }: Props) {
   const [erreur, setErreur] = useState(false)
 
   useEffect(() => {
-    audio.dire({ tts: `Bonjour ! Touche ton code secret.` })
+    audio.dire(voix('code-consigne'))
     return () => audio.stop()
   }, [])
 
-  function toucher(i: Icone) {
+  function toucher(i: IconeCode) {
     if (saisie.length >= 3) return
     setErreur(false)
     const nouveau = [...saisie, i.id]
     setSaisie(nouveau)
     if (nouveau.length === 3) {
       if (nouveau.every((id, idx) => id === profil.codeVisuel[idx])) {
-        audio.dire({ tts: `C'est bien toi, ${profil.prenom} !` }).then(onOk)
+        audio.dire(voix('code-bienvenue')).then(onOk)
       } else {
         setErreur(true)
-        audio.dire({ tts: 'Ce n’est pas le bon code. Essaie encore !' })
+        audio.dire(voix('code-faux'))
         setTimeout(() => setSaisie([]), 700)
       }
     }

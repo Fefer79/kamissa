@@ -3,8 +3,9 @@
 // 3. le champion écrit le prénom (seule étape « lettrée », assistée).
 import { useEffect, useRef, useState } from 'preact/hooks'
 import { audio } from '../audio'
-import { AVATARS, ICONES_CODE, type Icone } from '../avatars'
+import { AVATARS, ICONES_CODE, type Avatar, type IconeCode } from '../avatars'
 import { db, emettreEvenement, genUuid, type Profil } from '../db'
+import { voix, type CleVoix } from '../voix'
 
 type SousEtape = 'avatar' | 'code' | 'prenom'
 
@@ -21,28 +22,28 @@ export function CreationProfil({ onFini, onAnnuler }: Props) {
   const enregistrementEnCours = useRef(false)
 
   useEffect(() => {
-    const consignes: Record<SousEtape, string> = {
-      avatar: 'Choisis ton animal ! Touche celui que tu préfères.',
-      code: 'Maintenant, choisis ton code secret : touche trois images, dans l’ordre. Retiens-les bien !',
-      prenom: 'Demande à ton champion d’écrire ton prénom.',
+    const consignes: Record<SousEtape, CleVoix> = {
+      avatar: 'creation-avatar',
+      code: 'creation-code',
+      prenom: 'creation-prenom',
     }
-    audio.dire({ tts: consignes[sousEtape] })
+    audio.dire(voix(consignes[sousEtape]))
     return () => audio.stop()
   }, [sousEtape])
 
-  function choisirAvatar(a: Icone) {
+  function choisirAvatar(a: Avatar) {
     setAvatarId(a.id)
-    audio.dire({ tts: `Tu as choisi ${a.nom} ! Super !` }).then(() => setSousEtape('code'))
+    audio.dire(voix(`avatar-${a.id}`)).then(() => setSousEtape('code'))
   }
 
-  function toucherIcone(i: Icone) {
+  function toucherIcone(i: IconeCode) {
     if (code.length >= 3) return
     const nouveau = [...code, i.id]
     setCode(nouveau)
     if (nouveau.length === 3) {
-      audio.dire({ tts: 'Voici ton code secret. Retiens-le bien !' })
+      audio.dire(voix('creation-code-fini'))
     } else {
-      audio.dire({ tts: i.nom })
+      audio.dire(voix(`icone-${i.id}`))
     }
   }
 
@@ -65,7 +66,7 @@ export function CreationProfil({ onFini, onAnnuler }: Props) {
       // Sans ce filet, le drapeau resterait armé : l'écran serait mort pour de
       // bon, et l'enfant n'a aucun texte pour comprendre pourquoi.
       enregistrementEnCours.current = false
-      audio.dire({ tts: 'Oups, ça ne marche pas. Touche encore !' })
+      audio.dire(voix('creation-erreur'))
     }
   }
 

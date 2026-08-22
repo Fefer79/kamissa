@@ -1,0 +1,42 @@
+{
+  "profils-choisir": "Bonjour ! Touche ton animal.",
+  "profils-premier": "Bonjour ! Touche le grand bouton pour commencer.",
+
+  "creation-avatar": "Choisis ton animal ! Touche celui que tu préfères.",
+  "creation-code": "Maintenant, choisis ton code secret : touche trois images, dans l'ordre. Retiens-les bien !",
+  "creation-code-fini": "Voici ton code secret. Retiens-le bien !",
+  "creation-prenom": "Demande à ton champion d'écrire ton prénom.",
+  "creation-erreur": "Oups, ça ne marche pas. Touche encore !",
+
+  "avatar-elephant": "Tu as choisi l'éléphant ! Super !",
+  "avatar-lion": "Tu as choisi le lion ! Super !",
+  "avatar-oiseau": "Tu as choisi l'oiseau ! Super !",
+  "avatar-poisson": "Tu as choisi le poisson ! Super !",
+  "avatar-papillon": "Tu as choisi le papillon ! Super !",
+  "avatar-tortue": "Tu as choisi la tortue ! Super !",
+  "avatar-abeille": "Tu as choisi l'abeille ! Super !",
+  "avatar-chevre": "Tu as choisi la chèvre ! Super !",
+
+  "icone-etoile": "l'étoile",
+  "icone-mangue": "la mangue",
+  "icone-fleur": "la fleur",
+  "icone-lune": "la lune",
+  "icone-tambour": "le tambour",
+  "icone-soleil": "le soleil",
+
+  "code-consigne": "Bonjour ! Touche ton code secret.",
+  "code-bienvenue": "C'est bien toi ! Bienvenue !",
+  "code-faux": "Ce n'est pas le bon code. Essaie encore !",
+
+  "accueil-bonjour": "Bonjour ! Touche le grand bouton pour jouer.",
+  "accueil-erreur": "Oups, ça ne marche pas. Touche encore le bouton !",
+
+  "bravo-1": "Bravo !",
+  "bravo-2": "Très bien !",
+  "bravo-3": "Oui, c'est ça !",
+  "essaie-1": "Essaie encore !",
+  "essaie-2": "Presque ! Écoute bien.",
+
+  "celebration-reussi": "Bravo ! Tu as réussi ! Ton manguier grandit !",
+  "celebration-encore": "C'est bien ! On va réessayer ensemble, tu vas y arriver."
+}

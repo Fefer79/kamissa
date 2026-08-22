@@ -3,6 +3,7 @@
 // du niveau 1 avec graphe de prérequis porté par le contenu (cadrage §3.5).
 import { useEffect, useState } from 'preact/hooks'
 import { audio } from '../audio'
+import { voix } from '../voix'
 import { avatarDe } from '../avatars'
 import { db, type Profil } from '../db'
 import type { Module } from '../types'
@@ -26,7 +27,7 @@ export function Accueil({ profil, onJouer, onChangerProfil }: Props) {
       .and((p) => p.statut === 'acquis')
       .count()
       .then((n) => setEtage(Math.min(n, 3)))
-    audio.dire({ tts: `Bonjour ${profil.prenom} ! Touche le grand bouton pour jouer.` })
+    audio.dire(voix('accueil-bonjour'))
     return () => audio.stop()
   }, [])
 
@@ -38,7 +39,7 @@ export function Accueil({ profil, onJouer, onChangerProfil }: Props) {
       onJouer(mod)
     } catch {
       // Sans ce garde-fou, un échec de chargement laisserait l'enfant taper ▶ sans rien.
-      audio.dire({ tts: 'Oups, ça ne marche pas. Touche encore le bouton !' })
+      audio.dire(voix('accueil-erreur'))
     }
   }
 

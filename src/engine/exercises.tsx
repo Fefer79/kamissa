@@ -3,22 +3,19 @@
 // association et choix-image (même mécanique, présentation différente).
 import { useEffect, useRef, useState } from 'preact/hooks'
 import { audio, type Voix } from '../audio'
+import { voix } from '../voix'
 import type { Choix, Etape } from '../types'
 
-const VOIX_BRAVO: Voix[] = [
-  { tts: 'Bravo !' },
-  { tts: 'Très bien !' },
-  { tts: 'Oui, c’est ça !' },
-]
-const VOIX_ESSAIE: Voix[] = [{ tts: 'Essaie encore !' }, { tts: 'Presque ! Écoute bien.' }]
+const VOIX_BRAVO = [voix('bravo-1'), voix('bravo-2'), voix('bravo-3')]
+const VOIX_ESSAIE = [voix('essaie-1'), voix('essaie-2')]
 
 let compteurBravo = 0
 let compteurEssaie = 0
 
 /** Bouton haut-parleur : l'enfant peut réécouter la consigne autant qu'il veut. */
-function BoutonRejouer({ voix }: { voix: Voix }) {
+function BoutonRejouer({ consigne }: { consigne: Voix }) {
   return (
-    <button class="btn-rejouer" onClick={() => audio.dire(voix)} aria-label="Réécouter">
+    <button class="btn-rejouer" onClick={() => audio.dire(consigne)} aria-label="Réécouter">
       🔊
     </button>
   )
@@ -39,7 +36,7 @@ export function Ecoute({
 
   return (
     <div class="exercice">
-      <BoutonRejouer voix={etape.voix} />
+      <BoutonRejouer consigne={etape.voix} />
       <div class="scene">
         {etape.lettre && <div class="grande-lettre">{etape.lettre}</div>}
         {etape.illustration && <div class="grande-illustration">{etape.illustration}</div>}
@@ -89,7 +86,7 @@ export function ExerciceChoix({
 
   return (
     <div class="exercice">
-      <BoutonRejouer voix={etape.voix} />
+      <BoutonRejouer consigne={etape.voix} />
       <div class="grille-choix">
         {etape.choix.map((c) => (
           <button

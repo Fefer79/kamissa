@@ -1,6 +1,7 @@
 // Sélection de profil sur téléphone partagé (C4) : l'enfant reconnaît son animal.
 import { useEffect } from 'preact/hooks'
 import { audio } from '../audio'
+import { voix } from '../voix'
 import { avatarDe } from '../avatars'
 import type { Profil } from '../db'
 import { LogoMot } from '../components/Companion'
@@ -13,11 +14,7 @@ interface Props {
 
 export function SelectionProfil({ profils, onChoisir, onCreer }: Props) {
   useEffect(() => {
-    audio.dire({
-      tts: profils.length
-        ? 'Bonjour ! Touche ton animal.'
-        : 'Bonjour ! Touche le grand bouton pour commencer.',
-    })
+    audio.dire(voix(profils.length ? 'profils-choisir' : 'profils-premier'))
     return () => audio.stop()
   }, [])
 
