@@ -63,6 +63,20 @@ def duree_plafond(texte: str) -> float:
     return 1.5 + 0.11 * len(texte)
 
 
+# Symétrique du plafond, contre la panne inverse : le modèle s'arrête avant la
+# fin du texte et livre une consigne coupée en deux. Plus grave que le babillage
+# — l'enfant reste sans instruction et ne sait pas quoi toucher — et invisible,
+# car un fichier court ne réveille aucun soupçon.
+# Le seuil vient du corpus, pas d'une intuition : sur les 42 fichiers livrés, le
+# débit le plus rapide est 21,4 car/s (« a-beille, abeille »). On place donc la
+# borne d'impossibilité à 30 car/s, largement au-dessus du corpus réel : aucun
+# faux positif sur l'existant, et une phrase amputée de moitié est prise.
+# Ça ne rattrape pas une troncature légère (un mot perdu en fin de phrase) :
+# seule une transcription du fichier généré le ferait. Voir NOTES ci-dessous.
+def duree_plancher(texte: str) -> float:
+    return len(texte) / 30
+
+
 # Une lettre répétée pour figurer un son tenu (« le son aaa ») ne se prononce
 # pas tenue : le modèle dit trois « a » détachés. L'enfant apprend alors à
 # reconnaître trois sons là où on lui en enseigne un — l'inverse de la leçon.
@@ -241,16 +255,25 @@ def main() -> None:
         if args.voix_reference:
             kwargs["audio_prompt_path"] = str(args.voix_reference)
         plafond = duree_plafond(texte)
+        plancher = duree_plancher(texte)
         essais = []
         for tentative in range(1, 4):
             candidat = modele.generate(texte, **kwargs)
             secondes = candidat.shape[-1] / modele.sr
-            essais.append((secondes, candidat))
-            if secondes <= plafond:
+            if secondes > plafond:
+                defaut = f"durée invraisemblable : {secondes:.1f} s > {plafond:.1f} s"
+            elif secondes < plancher:
+                defaut = f"trop court pour le texte : {secondes:.1f} s < {plancher:.1f} s"
+            else:
+                defaut = None
+            essais.append((defaut is not None, secondes, candidat))
+            if defaut is None:
                 break
-            print(f"    durée invraisemblable : {secondes:.1f} s > {plafond:.1f} s — tentative {tentative + 1}/3")
-        secondes, wav = min(essais, key=lambda e: e[0])
-        if secondes > plafond:
+            print(f"    {defaut} — tentative {tentative + 1}/3")
+        # À défaut d'un essai valable, on garde le moins court : entre babiller
+        # et se taire, le babillage laisse au moins la consigne entière.
+        fautif, secondes, wav = min(essais, key=lambda e: (e[0], -e[1]))
+        if fautif:
             print(f"!! {cle} : {secondes:.1f} s après 3 tentatives — à écouter avant livraison")
         cible.parent.mkdir(parents=True, exist_ok=True)
         tmp = Path(tempfile.NamedTemporaryFile(suffix=".wav", delete=False).name)
