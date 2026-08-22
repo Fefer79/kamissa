@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAMISSA — Proposition de redesign</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Lexend:wght@400;500;600&display=swap');
+:root{
+  --indigo:#2E3D96;--corail:#E8482B;--soleil:#FFB81C;--manguier:#1FA05C;
+  --karite:#FDF8EF;--sable:#EDE4D3;--encre:#241E16;--douce:#6B6053;
+  --nuit:#232457;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--karite);color:var(--encre);font-family:'Lexend',system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:26px 18px 80px}
+h1{font-family:'Baloo 2';font-weight:800;color:var(--encre);font-size:clamp(28px,5vw,38px);line-height:1.15}
+.intro{color:var(--douce);margin:8px 0 26px;max-width:66ch}
+h2{font-family:'Baloo 2';font-weight:700;color:var(--encre);font-size:23px;margin:44px 0 4px}
+h2 .num{color:var(--corail)}
+h3{font-family:'Baloo 2';font-weight:700;font-size:17px;margin:22px 0 2px}
+.sub{color:var(--douce);font-size:14.5px;margin-bottom:14px;max-width:66ch}
+.grid{display:grid;gap:14px}
+@media(min-width:640px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.tile{background:#fff;border:1px solid var(--sable);border-radius:20px;padding:26px 18px;display:grid;place-items:center;min-height:200px;box-shadow:0 4px 14px rgba(36,30,22,.08);position:relative}
+.tile.indigo{background:var(--indigo)}
+.tile.nuit{background:var(--nuit)}
+.tile.karite{background:var(--karite)}
+.tile .cap{position:absolute;bottom:10px;left:8px;right:8px;text-align:center;font-size:11.5px;color:var(--douce)}
+.tile.indigo .cap,.tile.nuit .cap{color:#C7CEF5}
+ul{padding-left:20px;font-size:14.5px}
+li{margin-bottom:7px}
+b.k{font-family:'Baloo 2'}
+.non{color:var(--corail);font-weight:600}
+.oui{color:var(--manguier);font-weight:600}
+svg{max-width:100%;height:auto}
+.piste{display:inline-block;font-family:'Baloo 2';font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:6px}
+.piste.a{background:#E4E7FA;color:var(--indigo)}
+.piste.b{background:#FBE3DE;color:var(--corail)}
+table{border-collapse:collapse;width:100%;font-size:14px;margin-top:10px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--sable);text-align:left;vertical-align:middle}
+th{font-family:'Baloo 2';font-weight:700;font-size:13px;letter-spacing:.04em;color:var(--douce);text-transform:uppercase}
+.sw{display:inline-block;width:26px;height:26px;border-radius:8px;vertical-align:middle;margin-right:10px;border:1px solid rgba(36,30,22,.12)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.92em;background:#fff;border:1px solid var(--sable);border-radius:6px;padding:1px 6px}
+.note{background:#fff;border:1px solid var(--sable);border-left:4px solid var(--soleil);border-radius:12px;padding:14px 16px;font-size:14.5px;margin-top:16px}
+.sizes{display:flex;align-items:flex-end;gap:18px}
+.sizes figure{text-align:center;font-size:11px;color:var(--douce)}
+.tag{font-style:normal;font-family:'Lexend';font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- Bibliothèque d'emblèmes : chaque forme est définie une seule fois et réutilisée par <use>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <!-- Piste A — couleur, sur tuile indigo (grille 128) -->
+  <g id="embA">
+    <rect width="128" height="128" rx="30" fill="#2E3D96"/>
+    <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#FDF8EF"/>
+    <path d="M64 80 L64 64" stroke="#1FA05C" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#1FA05C"/>
+    <circle cx="64" cy="41" r="11" fill="#FFB81C"/>
+    <path d="M78 30 a13 13 0 0 1 8 10" stroke="#E8482B" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M85 21 a21 21 0 0 1 13 17" stroke="#E8482B" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Piste A — sans tuile, accents éclaircis (pour fond indigo) -->
+  <g id="embA-rev">
+    <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#FDF8EF"/>
+    <path d="M64 80 L64 64" stroke="#7FD4A6" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#7FD4A6"/>
+    <circle cx="64" cy="41" r="11" fill="#FFB81C"/>
+    <path d="M78 30 a13 13 0 0 1 8 10" stroke="#FF8A70" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M85 21 a21 21 0 0 1 13 17" stroke="#FF8A70" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Piste A — monochrome encre -->
+  <g id="embA-mono">
+    <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#241E16"/>
+    <path d="M64 80 L64 64" stroke="#241E16" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#241E16"/>
+    <circle cx="64" cy="41" r="9.5" fill="none" stroke="#241E16" stroke-width="5"/>
+    <path d="M78 30 a13 13 0 0 1 8 10" stroke="#241E16" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M85 21 a21 21 0 0 1 13 17" stroke="#241E16" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Piste B — cœur « a + ondes », sans tuile (grille 128) -->
+  <g id="embB-core">
+    <text x="57" y="99" text-anchor="middle" font-family="'Baloo 2',sans-serif" font-size="92" font-weight="800" fill="#FDF8EF">a</text>
+    <path d="M92 38 a15 15 0 0 1 9 12" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M99 28 a24 24 0 0 1 15 20" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/>
+  </g>
+  <g id="embB">
+    <rect width="128" height="128" rx="30" fill="#232457"/>
+    <use href="#embB-core"/>
+  </g>
+  <!-- Piste B — ondes éclaircies pour fond nuit -->
+  <g id="embB-rev">
+    <text x="57" y="99" text-anchor="middle" font-family="'Baloo 2',sans-serif" font-size="92" font-weight="800" fill="#FDF8EF">a</text>
+    <path d="M92 38 a15 15 0 0 1 9 12" stroke="#FF8A70" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M99 28 a24 24 0 0 1 15 20" stroke="#FF8A70" stroke-width="7" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Piste B — monochrome encre -->
+  <g id="embB-mono">
+    <text x="57" y="99" text-anchor="middle" font-family="'Baloo 2',sans-serif" font-size="92" font-weight="800" fill="#241E16">a</text>
+    <path d="M92 38 a15 15 0 0 1 9 12" stroke="#241E16" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M99 28 a24 24 0 0 1 15 20" stroke="#241E16" stroke-width="7" stroke-linecap="round" fill="none"/>
+  </g>
+</defs>
+</svg>
+
+<div class="wrap">
+
+<h1>Proposition de redesign — logo &amp; charte graphique</h1>
+<p class="intro">KAMISSA · août 2026. Deux pistes : <b class="k">A — Évolution</b> (le livre qui grandit, allégé) et <b class="k">B — Rupture</b> (« le a qui parle »). Chacune est livrée avec emblème, déclinaisons, palette et règles. La charte actuelle (<code>KAMISSA_Logo_Declinaisons.html</code>) reste la référence tant qu'aucune piste n'est validée.</p>
+<div class="note">✅ <b class="k">Piste A retenue</b> (août 2026) — déclinée dans la charte de référence (<code>KAMISSA_Logo_Declinaisons.html</code>), les fichiers de production (<code>KAMISSA_Logo.svg/.png</code>, <code>public/icons/</code>) et l'app (<code>theme.css</code>, <code>Companion.tsx</code>).</div>
+
+<h2><span class="num">00.</span> Diagnostic de l'existant</h2>
+<p class="sub">Le concept actuel est bon — livre, manguier, mangue-soleil, voix — et l'histoire qu'il raconte (l'héritage de Kamissa la libraire) doit rester la colonne vertébrale de la marque. Ses faiblesses sont d'exécution :</p>
+<ul>
+  <li><b class="k">Surcharge en petit :</b> 7 formes (livre, tige, 2 feuilles, mangue, 2 ondes) dans 120 px — à 24 px (favicon, icône), il ne reste qu'une tache indéchiffrable. Or l'icône doit être reconnue <i>à 3 mètres</i> par un enfant sur un téléphone partagé.</li>
+  <li><b class="k">Traits trop fins :</b> ondes à 4,5 px et feuilles de ~15 px disparaissent sous les 32 px.</li>
+  <li><b class="k">5 couleurs simultanées</b> dans l'emblème : indigo, karité, manguier, soleil, corail — aucune ne domine, la marque n'a pas de couleur-signature.</li>
+  <li><b class="k">Mot-symbole tracé :</b> le « kamissa » du SVG officiel est un empilement de glyphes convertis en chemins — impossible à éditer, graisse incohérente avec la Baloo 2 réelle, fichier lourd.</li>
+  <li><b class="k">Devise en italique 15 px</b> : illisible en petit et faible hiérarchiquement.</li>
+</ul>
+<div class="note"><b class="k">Principes directeurs du redesign :</b> ① lisible à 24 px et à 3 m — ② 3 couleurs maximum par emblème — ③ mot-symbole composé en vraie Baloo 2 — ④ un système extensible (icônes de modules, célébrations, print) plutôt qu'un simple logo.</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">A.</span> Piste A — Évolution « le livre qui grandit »</h2>
+<p class="sub"><span class="piste a">Piste A · Évolution</span><br>
+Le concept fondateur, redessiné sur une grille 128 px : livre plus ample, <b class="k">les deux feuilles fusionnent en un seul geste végétal</b> qui porte la mangue, mangue-soleil agrandie, ondes raccourcies et épaissies (6,5 px au lieu de 4,5). La palette ne change pas ; le « i » corail est conservé.</p>
+
+<h3>Avant / après</h3>
+<div class="grid g2">
+  <div class="tile">
+    <svg viewBox="0 0 120 120" width="150" role="img" aria-label="Emblème actuel">
+      <rect width="120" height="120" rx="28" fill="#2E3D96"/>
+      <path d="M24 74 C38 66,50 66,60 72 C70 66,82 66,96 74 L96 85 C82 77,70 77,60 83 C50 77,38 77,24 85 Z" fill="#FDF8EF"/>
+      <path d="M60 72 L60 49" stroke="#1FA05C" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M60 61 C51 61,45 56,44 48 C52 48,58 53,60 61 Z" fill="#1FA05C"/>
+      <path d="M60 55 C69 55,75 50,76 42 C68 42,62 47,60 55 Z" fill="#1FA05C"/>
+      <circle cx="60" cy="39" r="9.5" fill="#FFB81C"/>
+      <path d="M75 30 a13 13 0 0 1 8 11" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      <path d="M80 21 a21 21 0 0 1 12 17" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="cap">Actuel — 7 formes, traits 4,5–5 px</span>
+  </div>
+  <div class="tile">
+    <svg viewBox="0 0 128 128" width="150" role="img" aria-label="Emblème piste A"><use href="#embA"/></svg>
+    <span class="cap">Piste A — 5 formes, traits 6,5–7 px</span>
+  </div>
+</div>
+
+<h3>Logo complet</h3>
+<div class="grid g2">
+  <div class="tile" style="min-height:260px">
+    <svg viewBox="0 0 360 240" width="280" font-family="'Baloo 2',sans-serif">
+      <use href="#embA" transform="translate(116,6)"/>
+      <text x="180" y="192" text-anchor="middle" font-size="52" font-weight="800" fill="#2E3D96" letter-spacing="0.5">kam<tspan fill="#E8482B">i</tspan>ssa</text>
+      <text x="180" y="222" text-anchor="middle" font-family="'Lexend',sans-serif" font-weight="500" font-size="12.5" letter-spacing="2.2" fill="#6B6053">L'ÉCOLE DANS LA POCHE</text>
+    </svg>
+    <span class="cap">Vertical — documents, supports partenaires</span>
+  </div>
+  <div class="tile" style="min-height:260px">
+    <svg viewBox="0 0 440 128" width="330" font-family="'Baloo 2',sans-serif">
+      <use href="#embA" transform="translate(0,8) scale(0.875)"/>
+      <text x="132" y="82" font-size="50" font-weight="800" fill="#2E3D96" letter-spacing="0.5">kam<tspan fill="#E8482B">i</tspan>ssa</text>
+    </svg>
+    <span class="cap">Horizontal — en-têtes, site, signatures</span>
+  </div>
+</div>
+
+<h3>Déclinaisons</h3>
+<div class="grid g3">
+  <div class="tile indigo">
+    <svg viewBox="0 0 360 180" width="230" font-family="'Baloo 2',sans-serif">
+      <use href="#embA-rev" transform="translate(120,-12)"/>
+      <text x="184" y="152" text-anchor="middle" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">kam<tspan fill="#FFB81C">i</tspan>ssa</text>
+    </svg>
+    <span class="cap">Sur indigo — manguier et corail éclaircis</span>
+  </div>
+  <div class="tile">
+    <svg viewBox="0 0 360 180" width="230" font-family="'Baloo 2',sans-serif">
+      <use href="#embA-mono" transform="translate(120,-12)"/>
+      <text x="184" y="152" text-anchor="middle" font-size="46" font-weight="800" fill="#241E16" letter-spacing="0.5">kamissa</text>
+    </svg>
+    <span class="cap">Monochrome — tampons, photocopies</span>
+  </div>
+  <div class="tile karite">
+    <div class="sizes">
+      <figure><svg viewBox="0 0 128 128" width="64" height="64"><use href="#embA"/></svg><figcaption>64</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="32" height="32"><use href="#embA"/></svg><figcaption>32</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="24" height="24"><use href="#embA"/></svg><figcaption>24</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="16" height="16"><use href="#embA"/></svg><figcaption>16</figcaption></figure>
+    </div>
+    <span class="cap">Test de réduction — px réels</span>
+  </div>
+</div>
+<ul style="margin-top:14px">
+  <li><b class="k">Ce qui change :</b> les deux feuilles fusionnent en un geste unique, traits épaissis de 40 %, mangue +20 %, ondes raccourcies, devise en capitales Lexend espacées (lisible à toute taille), mot-symbole en vraie Baloo 2.</li>
+  <li><b class="k">Ce qui est préservé :</b> l'histoire complète (livre, manguier, mangue-soleil, voix), la palette, le « i » corail. Aucun coût de transition : les supports existants restent compatibles.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2><span class="num">B.</span> Piste B — Rupture « le a qui parle »</h2>
+<p class="sub"><span class="piste b">Piste B · Rupture</span><br>
+Nouvel emblème : <b class="k">un « a » minuscule qui émet des ondes sonores</b>. Le « a » est la première lettre qu'un enfant apprend (et le premier module de l'app) — et c'est la lettre qui ouvre et ferme « kamissa ». Les ondes corail affirment la différence du produit : <i>l'audio EST l'interface</i>. Un seul glyphe = lisibilité maximale à 24 px et à 3 m.</p>
+
+<div class="grid g2">
+  <div class="tile" style="min-height:260px">
+    <svg viewBox="0 0 360 240" width="280" font-family="'Baloo 2',sans-serif">
+      <use href="#embB" transform="translate(116,6)"/>
+      <text x="180" y="192" text-anchor="middle" font-size="52" font-weight="800" fill="#232457" letter-spacing="0.5">kamiss<tspan fill="#E8482B">a</tspan></text>
+      <text x="180" y="222" text-anchor="middle" font-family="'Lexend',sans-serif" font-weight="500" font-size="12.5" letter-spacing="2.2" fill="#6B6053">L'ÉCOLE DANS LA POCHE</text>
+    </svg>
+    <span class="cap">Vertical — le « a » final du mot reprend le corail de l'emblème</span>
+  </div>
+  <div class="tile" style="min-height:260px">
+    <svg viewBox="0 0 440 128" width="330" font-family="'Baloo 2',sans-serif">
+      <use href="#embB" transform="translate(0,8) scale(0.875)"/>
+      <text x="132" y="82" font-size="50" font-weight="800" fill="#232457" letter-spacing="0.5">kamiss<tspan fill="#E8482B">a</tspan></text>
+    </svg>
+    <span class="cap">Horizontal</span>
+  </div>
+</div>
+
+<h3>Déclinaisons</h3>
+<div class="grid g3">
+  <div class="tile nuit">
+    <svg viewBox="0 0 360 180" width="230" font-family="'Baloo 2',sans-serif">
+      <use href="#embB-rev" transform="translate(116,10)"/>
+      <text x="180" y="162" text-anchor="middle" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">kamiss<tspan fill="#FFB81C">a</tspan></text>
+    </svg>
+    <span class="cap">Sur nuit — corail éclairci</span>
+  </div>
+  <div class="tile">
+    <svg viewBox="0 0 360 180" width="230" font-family="'Baloo 2',sans-serif">
+      <use href="#embB-mono" transform="translate(116,10)"/>
+      <text x="180" y="162" text-anchor="middle" font-size="46" font-weight="800" fill="#241E16" letter-spacing="0.5">kamissa</text>
+    </svg>
+    <span class="cap">Monochrome</span>
+  </div>
+  <div class="tile karite">
+    <div class="sizes">
+      <figure><svg viewBox="0 0 128 128" width="64" height="64"><use href="#embB"/></svg><figcaption>64</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="32" height="32"><use href="#embB"/></svg><figcaption>32</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="24" height="24"><use href="#embB"/></svg><figcaption>24</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="16" height="16"><use href="#embB"/></svg><figcaption>16</figcaption></figure>
+    </div>
+    <span class="cap">Test de réduction — le « a » survit à 16 px</span>
+  </div>
+</div>
+
+<h3>Le système : l'alphabet qui parle</h3>
+<p class="sub">L'emblème se décline en icônes de modules : chaque lettre apprise devient une tuile « lettre + ondes ». La marque couvre alors tout le parcours — et l'enfant collectionne les lettres comme il fait grandir le manguier.</p>
+<div class="grid g4">
+  <div class="tile karite" style="min-height:110px"><svg viewBox="0 0 128 128" width="72" font-family="'Baloo 2',sans-serif"><rect width="128" height="128" rx="30" fill="#232457"/><text x="57" y="99" text-anchor="middle" font-size="92" font-weight="800" fill="#FDF8EF">a</text><path d="M92 38 a15 15 0 0 1 9 12" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M99 28 a24 24 0 0 1 15 20" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/></svg><span class="cap">module « a »</span></div>
+  <div class="tile karite" style="min-height:110px"><svg viewBox="0 0 128 128" width="72" font-family="'Baloo 2',sans-serif"><rect width="128" height="128" rx="30" fill="#232457"/><text x="57" y="99" text-anchor="middle" font-size="92" font-weight="800" fill="#FFB81C">b</text><path d="M92 38 a15 15 0 0 1 9 12" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M99 28 a24 24 0 0 1 15 20" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/></svg><span class="cap">lettre maîtrisée (soleil)</span></div>
+  <div class="tile karite" style="min-height:110px"><svg viewBox="0 0 128 128" width="72" font-family="'Baloo 2',sans-serif"><rect width="128" height="128" rx="30" fill="#232457"/><text x="57" y="99" text-anchor="middle" font-size="92" font-weight="800" fill="#1FA05C">m</text><path d="M92 38 a15 15 0 0 1 9 12" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M99 28 a24 24 0 0 1 15 20" stroke="#E8482B" stroke-width="7" stroke-linecap="round" fill="none"/></svg><span class="cap">en cours (manguier)</span></div>
+  <div class="tile karite" style="min-height:110px"><svg viewBox="0 0 128 128" width="72" font-family="'Baloo 2',sans-serif"><rect width="128" height="128" rx="30" fill="#EDE4D3"/><text x="57" y="99" text-anchor="middle" font-size="92" font-weight="800" fill="#B8AD9C">o</text></svg><span class="cap">verrouillé (sable, sans ondes)</span></div>
+</div>
+<div class="note"><b class="k">Important :</b> en piste B, le manguier ne disparaît pas — il quitte le logo pour se concentrer là où il vit déjà : le compagnon de progression dans l'app (<code>Companion.tsx</code>), les célébrations et les illustrations. Le livre, lui, reste l'icône métier des supports de lecture. La marque passe d'un emblème qui raconte tout à un système où chaque élément a un rôle.</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">C.</span> Palettes</h2>
+<p class="sub">Piste A : palette inchangée, rôles codifiés. Piste B : l'indigo est approfondi en <b class="k">nuit</b> <code>#232457</code> (contraste renforcé, le corail y chante davantage) et les rôles sont rebattus — le corail devient la couleur-signature de la marque.</p>
+<table>
+  <tr><th>Couleur</th><th>Rôle</th><th>Ratio sur karité / nuit</th><th>Usage texte</th></tr>
+  <tr><td><span class="sw" style="background:#232457"></span><code>#232457</code> nuit <span style="color:var(--douce)">(B · remplace indigo #2E3D96, 8,93:1)</span></td><td>Primaire — surfaces, mot-symbole</td><td>13,58 : 1</td><td class="oui">AAA, tout texte</td></tr>
+  <tr><td><span class="sw" style="background:#E8482B"></span><code>#E8482B</code> corail</td><td>La voix — action principale, ondes</td><td>3,68 : 1</td><td>Grands titres ≥ 24 px gras, icônes, jamais de texte courant</td></tr>
+  <tr><td><span class="sw" style="background:#FFB81C"></span><code>#FFB81C</code> soleil</td><td>Réussite, encouragement</td><td>—</td><td>Jamais de texte ; texte encre sur soleil : 9,53 : 1 <span class="oui">AAA</span></td></tr>
+  <tr><td><span class="sw" style="background:#1FA05C"></span><code>#1FA05C</code> manguier</td><td>Progression, validation</td><td>3,18 : 1</td><td>Icônes et indicateurs, pas de texte courant</td></tr>
+  <tr><td><span class="sw" style="background:#FDF8EF"></span><code>#FDF8EF</code> karité</td><td>Fond par défaut (60 % des surfaces)</td><td>—</td><td>Texte nuit/encre dessus</td></tr>
+  <tr><td><span class="sw" style="background:#241E16"></span><code>#241E16</code> encre</td><td>Texte courant</td><td>15,60 : 1</td><td class="oui">AAA</td></tr>
+  <tr><td><span class="sw" style="background:#6B6053"></span><code>#6B6053</code> douce</td><td>Texte secondaire</td><td>5,80 : 1</td><td class="oui">AA</td></tr>
+  <tr><td><span class="sw" style="background:#EDE4D3"></span><code>#EDE4D3</code> sable</td><td>Bordures, états verrouillés</td><td>—</td><td>Décoratif uniquement</td></tr>
+</table>
+<p class="sub" style="margin-top:10px">Proportion cible : <b class="k">60</b> karité · <b class="k">25</b> nuit/indigo · <b class="k">10</b> soleil · <b class="k">5</b> corail. Le corail est une épice : s'il dépasse 5 % d'un écran, il ne signifie plus rien.</p>
+
+<h2><span class="num">D.</span> Typographie (inchangée, hiérarchie précisée)</h2>
+<ul>
+  <li><b class="k">Baloo 2</b> — titres, mot-symbole, lettres d'apprentissage. Ronde, ventrée, elle ressemble aux lettres que l'enfant trace. Toujours en minuscules pour la marque.</li>
+  <li><b class="k">Lexend</b> — texte courant. Conçue à la base pour améliorer la proficiency en lecture : c'est le bon choix, on le garde.</li>
+  <li><b class="k">Devise :</b> fini l'italique — Lexend 500, capitales, interlettre 0,18 em (<span class="tag" style="font-size:12px;color:var(--douce)">L'école dans la poche</span>).</li>
+  <li><b class="k">Livraison finale :</b> le mot-symbole et le « a » de l'emblème sont convertis en tracés dans les SVG de production (ici, ils utilisent la fonte pour rester éditables).</li>
+</ul>
+
+<h2><span class="num">E.</span> Règles d'usage (communes aux deux pistes)</h2>
+<ul>
+  <li><b class="k">Zone de protection :</b> hauteur d'une onde autour de l'emblème ; hauteur du « a » autour du mot-symbole.</li>
+  <li><b class="k">Tailles minimales :</b> emblème 20 px (A) / 16 px (B) ; lockup horizontal 120 px de large. En dessous : emblème seul, sans ondes secondaires si besoin.</li>
+  <li><b class="k">Fonds :</b> karité ou blanc ; versions éclaircies sur indigo/nuit ; monochrome encre pour tampons et photocopies. Jamais sur photo chargée.</li>
+  <li class="non">À ne jamais faire : déformer, incliner, dégrader, ombre portée, contour, changer les couleurs, écrire le mot-symbole en capitales (« KAMISSA »), retirer les ondes (c'est retirer la voix).</li>
+</ul>
+
+<h2><span class="num">F.</span> Recommandation</h2>
+<ul>
+  <li><b class="k">Choisir A</b> si la priorité est la continuité à coût nul : supports partenaires, dossiers de financement, terrain — l'histoire du livre de Kamissa reste dans le logo.</li>
+  <li><b class="k">Choisir B</b> <span class="oui">(notre recommandation)</span> si l'app est le contact principal : l'icône se reconnaît à 3 m et à 16 px, le corail-voix devient une vraie signature, et le système d'alphabet donne à la marque un actif extensible que personne d'autre ne peut copier. L'histoire fondatrice n'est pas perdue : elle est racontée par l'onboarding et le manguier compagnon, pas nécessairement par l'icône.</li>
+</ul>
+<p class="sub" style="margin-top:12px">Prochaines étapes : choix de la piste → déclinaison des SVG de production (emblème tracé, tailles PWA 192/512, maskable) → mise à jour de <code>src/styles/theme.css</code> et de la charte de référence.</p>
+
+</div>
+</body>
+</html>

@@ -79,8 +79,11 @@ button {
 }
 .devise {
   color: var(--douce);
-  font-style: italic;
-  margin-top: -18px;
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: -14px;
 }
 
 /* ---------- boutons ---------- */

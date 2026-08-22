@@ -12,21 +12,31 @@ export interface Voix {
 
 class AudioManager {
   private courant: HTMLAudioElement | null = null
+  private finCourant: ((ok: boolean) => void) | null = null
+  private generation = 0
 
   /** Joue une voix : fichier si disponible, sinon repli TTS prototype. Résout à la fin de la lecture. */
   async dire(voix?: Voix): Promise<void> {
     if (!voix) return
     this.stop()
+    const gen = this.generation
     if (voix.audio) {
       const ok = await this.jouerFichier(voix.audio)
+      // Interrompu entre-temps : une voix plus récente a pris la main, on ne dit rien de plus.
+      if (gen !== this.generation) return
       if (ok) return
     }
     if (voix.tts) await this.jouerTTS(voix.tts)
   }
 
   stop(): void {
+    this.generation++
     this.courant?.pause()
     this.courant = null
+    // Débloque la lecture en cours : un élément pausé ne déclenchera jamais
+    // onended/onerror — sans cela, la promesse de dire() ne résoudrait jamais.
+    this.finCourant?.(false)
+    this.finCourant = null
     if ('speechSynthesis' in window) speechSynthesis.cancel()
   }
 
@@ -34,6 +44,7 @@ class AudioManager {
     return new Promise((resolve) => {
       const el = new Audio(`/content/audio/${nom}`)
       this.courant = el
+      this.finCourant = resolve
       el.onended = () => resolve(true)
       el.onerror = () => resolve(false)
       el.play().catch(() => resolve(false))

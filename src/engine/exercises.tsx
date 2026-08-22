@@ -13,6 +13,7 @@ const VOIX_BRAVO: Voix[] = [
 const VOIX_ESSAIE: Voix[] = [{ tts: 'Essaie encore !' }, { tts: 'Presque ! Écoute bien.' }]
 
 let compteurBravo = 0
+let compteurEssaie = 0
 
 /** Bouton haut-parleur : l'enfant peut réécouter la consigne autant qu'il veut. */
 function BoutonRejouer({ voix }: { voix: Voix }) {
@@ -82,7 +83,7 @@ export function ExerciceChoix({
     } else {
       premierEssai.current = false
       setEtats((e) => ({ ...e, [c.id]: 'faux' }))
-      audio.dire(VOIX_ESSAIE[compteurBravo % VOIX_ESSAIE.length])
+      audio.dire(VOIX_ESSAIE[compteurEssaie++ % VOIX_ESSAIE.length])
     }
   }
 

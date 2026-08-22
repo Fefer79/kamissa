@@ -1,0 +1,5 @@
+chatterbox-tts==0.1.6
+imageio-ffmpeg
+
+# setuptools<81 : requis par resemble-perth (pkg_resources), absent des venv uv
+setuptools==80.9.0

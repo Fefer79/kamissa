@@ -1,7 +1,7 @@
 // Création de profil guidée à la voix (C1, C5) :
 // 1. l'enfant choisit son animal ; 2. son code secret de 3 images (C4) ;
 // 3. le champion écrit le prénom (seule étape « lettrée », assistée).
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useRef, useState } from 'preact/hooks'
 import { audio } from '../audio'
 import { AVATARS, ICONES_CODE, type Icone } from '../avatars'
 import { db, emettreEvenement, genUuid, type Profil } from '../db'
@@ -18,6 +18,7 @@ export function CreationProfil({ onFini, onAnnuler }: Props) {
   const [avatarId, setAvatarId] = useState('')
   const [code, setCode] = useState<string[]>([])
   const [prenom, setPrenom] = useState('')
+  const enregistrementEnCours = useRef(false)
 
   useEffect(() => {
     const consignes: Record<SousEtape, string> = {
@@ -46,6 +47,9 @@ export function CreationProfil({ onFini, onAnnuler }: Props) {
   }
 
   async function enregistrer() {
+    // Garde contre le double-tap : sans elle, deux profils identiques seraient créés.
+    if (enregistrementEnCours.current) return
+    enregistrementEnCours.current = true
     const profil: Profil = {
       id: genUuid(),
       prenom: prenom.trim() || 'Ami',

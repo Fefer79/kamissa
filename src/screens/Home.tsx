@@ -31,9 +31,15 @@ export function Accueil({ profil, onJouer, onChangerProfil }: Props) {
   }, [])
 
   async function jouer() {
-    const rep = await fetch(`/content/modules/${MODULE_DU_JOUR}/module.json`)
-    const mod: Module = await rep.json()
-    onJouer(mod)
+    try {
+      const rep = await fetch(`/content/modules/${MODULE_DU_JOUR}/module.json`)
+      if (!rep.ok) throw new Error(`module ${MODULE_DU_JOUR} : HTTP ${rep.status}`)
+      const mod: Module = await rep.json()
+      onJouer(mod)
+    } catch {
+      // Sans ce garde-fou, un échec de chargement laisserait l'enfant taper ▶ sans rien.
+      audio.dire({ tts: 'Oups, ça ne marche pas. Touche encore le bouton !' })
+    }
   }
 
   return (

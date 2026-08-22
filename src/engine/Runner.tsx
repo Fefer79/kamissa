@@ -17,6 +17,7 @@ interface Props {
 export function Runner({ profil, module: mod, onFin }: Props) {
   const [index, setIndex] = useState(0)
   const resultats = useRef<boolean[]>([])
+  const finDemandee = useRef(false)
 
   useEffect(() => {
     emettreEvenement(profil.id, 'session_started', { moduleId: mod.moduleId })
@@ -35,8 +36,14 @@ export function Runner({ profil, module: mod, onFin }: Props) {
         juste: !!premierEssaiJuste,
       })
     }
-    if (index + 1 < mod.etapes.length) setIndex(index + 1)
-    else terminer()
+    if (index + 1 < mod.etapes.length) {
+      setIndex(index + 1)
+    } else if (!finDemandee.current) {
+      // Garde contre le double-tap sur la dernière étape : sans elle, terminer()
+      // tournerait deux fois (événements en double, tentatives incrémentées deux fois).
+      finDemandee.current = true
+      terminer()
+    }
   }
 
   async function terminer() {

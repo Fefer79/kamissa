@@ -4,3 +4,5 @@ dev-dist/
 .DS_Store
 *.local
 .gstack/
+tools/audio/.venv/
+tools/audio/__pycache__/

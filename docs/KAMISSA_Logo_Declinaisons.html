@@ -26,95 +26,114 @@ li{margin-bottom:7px}
 b.k{font-family:'Baloo 2'}
 .non{color:var(--corail);font-weight:600}
 svg{max-width:100%;height:auto}
+.sizes{display:flex;align-items:flex-end;gap:18px}
+.sizes figure{text-align:center;font-size:11px;color:var(--douce)}
 </style>
 </head>
 <body>
+
+<!-- Bibliothèque d'emblèmes : chaque variante est définie une fois, réutilisée par <use>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <!-- Emblème couleur sur tuile indigo — grille 128 px -->
+  <g id="emb">
+    <rect width="128" height="128" rx="30" fill="#2E3D96"/>
+    <g id="emb-art">
+      <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#FDF8EF"/>
+      <path d="M64 80 L64 64" stroke="#1FA05C" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#1FA05C"/>
+      <circle cx="64" cy="41" r="11" fill="#FFB81C"/>
+      <path d="M78 30 a13 13 0 0 1 8 10" stroke="#E8482B" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+      <path d="M85 21 a21 21 0 0 1 13 17" stroke="#E8482B" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
+  <!-- Icône d'app : plein cadre, art agrandi ×1,2 (les plateformes arrondissent elles-mêmes) -->
+  <g id="emb-app">
+    <rect width="128" height="128" fill="#2E3D96"/>
+    <use href="#emb-art" transform="translate(64,64) scale(1.2) translate(-64,-64)"/>
+  </g>
+  <!-- Sans tuile, accents éclaircis — pour fond indigo -->
+  <g id="emb-rev">
+    <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#FDF8EF"/>
+    <path d="M64 80 L64 64" stroke="#7FD4A6" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#7FD4A6"/>
+    <circle cx="64" cy="41" r="11" fill="#FFB81C"/>
+    <path d="M78 30 a13 13 0 0 1 8 10" stroke="#FF8A70" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M85 21 a21 21 0 0 1 13 17" stroke="#FF8A70" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Monochrome encre -->
+  <g id="emb-mono">
+    <path d="M24 80 C38 70 52 70 64 80 C76 70 90 70 104 80 L104 93 C90 83 76 83 64 93 C52 83 38 83 24 93 Z" fill="#241E16"/>
+    <path d="M64 80 L64 64" stroke="#241E16" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M64 66 C62 55 56 48 44 45 C45 57 52 65 64 66 Z M64 66 C66 55 72 48 84 45 C83 57 76 65 64 66 Z" fill="#241E16"/>
+    <circle cx="64" cy="41" r="9.5" fill="none" stroke="#241E16" stroke-width="5"/>
+    <path d="M78 30 a13 13 0 0 1 8 10" stroke="#241E16" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+    <path d="M85 21 a21 21 0 0 1 13 17" stroke="#241E16" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <clipPath id="sq"><rect width="128" height="128" rx="30"/></clipPath>
+</defs>
+</svg>
+
 <div class="wrap">
 
 <h1>Le logo KAMISSA</h1>
-<p class="intro"><b class="k">Concept : « le livre qui parle et fait grandir. »</b> Un livre ouvert — l'héritage de la libraire —, une pousse de manguier qui en jaillit, une mangue-soleil comme fruit de l'éducation, et les ondes corail de la voix du griot. Le mot-symbole est en <b>minuscules</b> : les premières lettres qu'un enfant apprend. Le point du « i » est corail — la voix au cœur du nom.</p>
+<p class="intro"><b class="k">Concept : « le livre qui parle et fait grandir. »</b> Un livre ouvert — l'héritage de la libraire —, une pousse de manguier qui en jaillit, une mangue-soleil comme fruit de l'éducation, et les ondes corail de la voix du griot. Le mot-symbole est en <b>minuscules</b> : les premières lettres qu'un enfant apprend. Le « i » est corail — la voix au cœur du nom.<br>
+<span style="font-size:13px">Version 2026 : géométrie redessinée sur grille 128 px — les deux feuilles fusionnent en un seul geste, traits épaissis à 6,5–7 px, mangue agrandie, devise en capitales espacées. Fichier canonique : <code>KAMISSA_Logo.svg</code> (mot-symbole tracé, régénéré par <code>tools/logo/trace_logo.py</code>).</span></p>
 
 <h2><span>01.</span> Logo principal</h2>
 <div class="grid g2">
   <div class="tile">
-    <svg viewBox="0 0 360 220" width="290" font-family="'Baloo 2',sans-serif">
-      <rect x="120" y="8" width="120" height="120" rx="28" fill="#2E3D96"/>
-      <path d="M144 82 C158 74,170 74,180 80 C190 74,202 74,216 82 L216 93 C202 85,190 85,180 91 C170 85,158 85,144 93 Z" fill="#FDF8EF"/>
-      <path d="M180 80 L180 57" stroke="#1FA05C" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <path d="M180 69 C171 69,165 64,164 56 C172 56,178 61,180 69 Z" fill="#1FA05C"/>
-      <path d="M180 63 C189 63,195 58,196 50 C188 50,182 55,180 63 Z" fill="#1FA05C"/>
-      <circle cx="180" cy="47" r="9.5" fill="#FFB81C"/>
-      <path d="M195 38 a13 13 0 0 1 8 11" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      <path d="M200 29 a21 21 0 0 1 12 17" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      <text x="180" y="180" text-anchor="middle" font-size="52" font-weight="800" fill="#2E3D96" letter-spacing="1">kam<tspan fill="#E8482B">i</tspan>ssa</text>
-      <text x="180" y="206" text-anchor="middle" font-size="16" font-style="italic" fill="#6B6053">l'école dans la poche</text>
+    <svg viewBox="0 0 360 240" width="290" font-family="'Baloo 2',sans-serif">
+      <use href="#emb" transform="translate(116,10)"/>
+      <text x="180" y="196" text-anchor="middle" font-size="52" font-weight="800" fill="#2E3D96" letter-spacing="0.5">kam<tspan fill="#E8482B">i</tspan>ssa</text>
+      <text x="180" y="226" text-anchor="middle" font-family="'Lexend',sans-serif" font-weight="500" font-size="12.5" letter-spacing="2.2" fill="#6B6053">L'ÉCOLE DANS LA POCHE</text>
     </svg>
     <span class="cap">Vertical — usage par défaut (documents, supports)</span>
   </div>
   <div class="tile">
-    <svg viewBox="0 0 430 120" width="330" font-family="'Baloo 2',sans-serif">
-      <rect x="6" y="10" width="100" height="100" rx="24" fill="#2E3D96"/>
-      <path d="M26 72 C38 65,48 65,56 70 C64 65,74 65,86 72 L86 81 C74 74,64 74,56 79 C48 74,38 74,26 81 Z" fill="#FDF8EF"/>
-      <path d="M56 70 L56 51" stroke="#1FA05C" stroke-width="4.4" stroke-linecap="round" fill="none"/>
-      <path d="M56 61 C48.5 61,43.5 57,42.5 50 C49.5 50,54.5 54.5,56 61 Z" fill="#1FA05C"/>
-      <path d="M56 56 C63.5 56,68.5 52,69.5 45 C62.5 45,57.5 49.5,56 56 Z" fill="#1FA05C"/>
-      <circle cx="56" cy="43" r="8" fill="#FFB81C"/>
-      <path d="M68 35 a11 11 0 0 1 7 9" stroke="#E8482B" stroke-width="3.8" stroke-linecap="round" fill="none"/>
-      <path d="M72 28 a17 17 0 0 1 10 14" stroke="#E8482B" stroke-width="3.8" stroke-linecap="round" fill="none"/>
-      <text x="122" y="76" font-size="47" font-weight="800" fill="#2E3D96" letter-spacing="1">kam<tspan fill="#E8482B">i</tspan>ssa</text>
+    <svg viewBox="0 0 440 128" width="330" font-family="'Baloo 2',sans-serif">
+      <use href="#emb" transform="translate(0,8) scale(0.875)"/>
+      <text x="132" y="82" font-size="50" font-weight="800" fill="#2E3D96" letter-spacing="0.5">kam<tspan fill="#E8482B">i</tspan>ssa</text>
     </svg>
     <span class="cap">Horizontal — en-têtes, site, signatures</span>
   </div>
 </div>
 
 <h2><span>02.</span> Icône d'application</h2>
-<p class="sub">L'emblème seul, plein cadre. C'est lui que l'enfant cherche sur l'écran du téléphone : il doit se reconnaître à 3 mètres.</p>
+<p class="sub">L'emblème seul, plein cadre, art agrandi ×1,2 pour rester lisible à 16 px. C'est lui que l'enfant cherche sur l'écran du téléphone : il doit se reconnaître à 3 mètres. Fichiers : <code>public/icons/icon.svg</code>, <code>icon-192.png</code>, <code>icon-512.png</code>, <code>icon-maskable-512.png</code> (art à ×0,8, dans la zone sûre).</p>
 <div class="grid g3">
   <div class="tile karite">
-    <svg viewBox="0 0 120 120" width="110">
-      <rect width="120" height="120" rx="28" fill="#2E3D96"/>
-      <path d="M24 74 C38 66,50 66,60 72 C70 66,82 66,96 74 L96 85 C82 77,70 77,60 83 C50 77,38 77,24 85 Z" fill="#FDF8EF"/>
-      <path d="M60 72 L60 49" stroke="#1FA05C" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <path d="M60 61 C51 61,45 56,44 48 C52 48,58 53,60 61 Z" fill="#1FA05C"/>
-      <path d="M60 55 C69 55,75 50,76 42 C68 42,62 47,60 55 Z" fill="#1FA05C"/>
-      <circle cx="60" cy="39" r="9.5" fill="#FFB81C"/>
-      <path d="M75 30 a13 13 0 0 1 8 11" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      <path d="M80 21 a21 21 0 0 1 12 17" stroke="#E8482B" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <svg viewBox="0 0 128 128" width="110">
+      <use href="#emb-app" clip-path="url(#sq)"/>
     </svg>
     <span class="cap">Icône app / favicon</span>
   </div>
+  <div class="tile karite">
+    <div class="sizes">
+      <figure><svg viewBox="0 0 128 128" width="64" height="64"><use href="#emb"/></svg><figcaption>64</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="32" height="32"><use href="#emb"/></svg><figcaption>32</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="24" height="24"><use href="#emb"/></svg><figcaption>24</figcaption></figure>
+      <figure><svg viewBox="0 0 128 128" width="16" height="16"><use href="#emb"/></svg><figcaption>16</figcaption></figure>
+    </div>
+    <span class="cap">Test de réduction — px réels</span>
+  </div>
   <div class="tile dark">
-    <svg viewBox="0 0 360 175" width="240" font-family="'Baloo 2',sans-serif">
-      <path d="M144 60 C158 52,170 52,180 58 C190 52,202 52,216 60 L216 71 C202 63,190 63,180 69 C170 63,158 63,144 71 Z" fill="#FDF8EF"/>
-      <path d="M180 58 L180 35" stroke="#7FD4A6" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <path d="M180 47 C171 47,165 42,164 34 C172 34,178 39,180 47 Z" fill="#7FD4A6"/>
-      <path d="M180 41 C189 41,195 36,196 28 C188 28,182 33,180 41 Z" fill="#7FD4A6"/>
-      <circle cx="180" cy="25" r="9.5" fill="#FFB81C"/>
-      <path d="M195 16 a13 13 0 0 1 8 11" stroke="#FF8A70" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      <text x="180" y="145" text-anchor="middle" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="1">kam<tspan fill="#FFB81C">i</tspan>ssa</text>
+    <svg viewBox="0 0 360 180" width="240" font-family="'Baloo 2',sans-serif">
+      <use href="#emb-rev" transform="translate(120,-12)"/>
+      <text x="184" y="152" text-anchor="middle" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">kam<tspan fill="#FFB81C">i</tspan>ssa</text>
     </svg>
     <span class="cap">Sur fond indigo — accents éclaircis</span>
-  </div>
-  <div class="tile">
-    <svg viewBox="0 0 360 175" width="240" font-family="'Baloo 2',sans-serif">
-      <path d="M144 60 C158 52,170 52,180 58 C190 52,202 52,216 60 L216 71 C202 63,190 63,180 69 C170 63,158 63,144 71 Z" fill="#241E16"/>
-      <path d="M180 56 L180 35" stroke="#241E16" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <path d="M180 47 C171 47,165 42,164 34 C172 34,178 39,180 47 Z" fill="#241E16"/>
-      <path d="M180 41 C189 41,195 36,196 28 C188 28,182 33,180 41 Z" fill="#241E16"/>
-      <circle cx="180" cy="25" r="9.5" fill="none" stroke="#241E16" stroke-width="4"/>
-      <path d="M195 16 a13 13 0 0 1 8 11" stroke="#241E16" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-      <text x="180" y="145" text-anchor="middle" font-size="46" font-weight="800" fill="#241E16" letter-spacing="1">kamissa</text>
-    </svg>
-    <span class="cap">Monochrome — tampons, photocopies, gravure</span>
   </div>
 </div>
 
 <h2><span>03.</span> Règles d'usage</h2>
 <ul>
   <li><b class="k">Zone de protection :</b> laisser autour du logo un espace vide égal à la hauteur de la mangue-soleil.</li>
-  <li><b class="k">Taille minimale :</b> emblème seul 24 px ; lockup complet 110 px de large. En dessous, utiliser l'emblème seul.</li>
-  <li><b class="k">Fonds :</b> karité ou blanc de préférence ; version éclaircie sur indigo ; monochrome encre partout ailleurs.</li>
-  <li><b class="k">Typographie :</b> mot-symbole en Baloo 2 ExtraBold, toujours en minuscules — ne jamais l'écrire « KAMISSA » dans le logo.</li>
+  <li><b class="k">Taille minimale :</b> emblème seul 20 px ; lockup complet 110 px de large. En dessous, utiliser l'emblème seul.</li>
+  <li><b class="k">Fonds :</b> karité ou blanc de préférence ; version éclaircie sur indigo ; monochrome encre partout ailleurs (tampons, photocopies, gravure).</li>
+  <li><b class="k">Typographie :</b> mot-symbole en Baloo 2 ExtraBold, toujours en minuscules — ne jamais l'écrire « KAMISSA » dans le logo. Devise en Lexend 500, capitales, interlettre 0,18 em — jamais d'italique.</li>
+  <li><b class="k">Monochrome :</b> la mangue-soleil devient un anneau (fond transparent au centre), tout le reste en encre.</li>
+  <li><b class="k">Compagnon :</b> le manguier de progression de l'app (<code>Companion.tsx</code>) utilise la même géométrie que l'emblème — il « construit » le logo étage après étage.</li>
   <li class="non">À ne jamais faire : déformer, incliner, changer les couleurs, ajouter une ombre portée, séparer les ondes de la mangue, ou placer le logo sur une photo chargée.</li>
 </ul>
 
