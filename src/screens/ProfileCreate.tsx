@@ -57,9 +57,16 @@ export function CreationProfil({ onFini, onAnnuler }: Props) {
       codeVisuel: code,
       createdAt: Date.now(),
     }
-    await db.profils.add(profil)
-    await emettreEvenement(profil.id, 'profile_created', { avatarId })
-    onFini(profil)
+    try {
+      await db.profils.add(profil)
+      await emettreEvenement(profil.id, 'profile_created', { avatarId })
+      onFini(profil)
+    } catch {
+      // Sans ce filet, le drapeau resterait armé : l'écran serait mort pour de
+      // bon, et l'enfant n'a aucun texte pour comprendre pourquoi.
+      enregistrementEnCours.current = false
+      audio.dire({ tts: 'Oups, ça ne marche pas. Touche encore !' })
+    }
   }
 
   return (

@@ -44,10 +44,19 @@ class AudioManager {
     return new Promise((resolve) => {
       const el = new Audio(`/content/audio/${nom}`)
       this.courant = el
-      this.finCourant = resolve
-      el.onended = () => resolve(true)
-      el.onerror = () => resolve(false)
-      el.play().catch(() => resolve(false))
+      // On ne libère que si l'élément est toujours celui en cours : un stop()
+      // suivi d'une autre lecture a pu prendre la main entre-temps.
+      const finir = (ok: boolean) => {
+        if (this.courant === el) {
+          this.courant = null
+          this.finCourant = null
+        }
+        resolve(ok)
+      }
+      this.finCourant = finir
+      el.onended = () => finir(true)
+      el.onerror = () => finir(false)
+      el.play().catch(() => finir(false))
     })
   }
 

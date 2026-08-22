@@ -51,32 +51,39 @@ export function Runner({ profil, module: mod, onFin }: Props) {
     const score = nbNotees ? justes / nbNotees : 1
     const reussi = score >= mod.seuilMaitrise
 
-    await emettreEvenement(profil.id, 'lesson_completed', {
-      moduleId: mod.moduleId,
-      score,
-      reussi,
-    })
+    // La persistance peut échouer (IndexedDB saturé, navigation privée). L'enfant
+    // ne doit jamais rester sur la dernière étape pour autant : la célébration est
+    // due, la trace se rattrapera à la session suivante.
+    try {
+      await emettreEvenement(profil.id, 'lesson_completed', {
+        moduleId: mod.moduleId,
+        score,
+        reussi,
+      })
 
-    // Progression : acquis si ≥ seuil ; révision espacée programmée à J+2
-    // (l'algorithme complet — SM-2 allégé — arrive en phase 1).
-    const existante = await db.progression
-      .where('[profilId+skillId]')
-      .equals([profil.id, mod.skillId])
-      .first()
-    const dejaAcquis = existante?.statut === 'acquis'
-    const maintenant = Date.now()
-    await db.progression.put({
-      ...existante,
-      profilId: profil.id,
-      skillId: mod.skillId,
-      statut: reussi || dejaAcquis ? 'acquis' : 'en-cours',
-      score: Math.max(score, existante?.score ?? 0),
-      tentatives: (existante?.tentatives ?? 0) + 1,
-      lastReviewAt: maintenant,
-      nextReviewAt: maintenant + DEUX_JOURS,
-    })
-    if (reussi && !dejaAcquis) {
-      await emettreEvenement(profil.id, 'skill_validated', { skillId: mod.skillId, score })
+      // Progression : acquis si ≥ seuil ; révision espacée programmée à J+2
+      // (l'algorithme complet — SM-2 allégé — arrive en phase 1).
+      const existante = await db.progression
+        .where('[profilId+skillId]')
+        .equals([profil.id, mod.skillId])
+        .first()
+      const dejaAcquis = existante?.statut === 'acquis'
+      const maintenant = Date.now()
+      await db.progression.put({
+        ...existante,
+        profilId: profil.id,
+        skillId: mod.skillId,
+        statut: reussi || dejaAcquis ? 'acquis' : 'en-cours',
+        score: Math.max(score, existante?.score ?? 0),
+        tentatives: (existante?.tentatives ?? 0) + 1,
+        lastReviewAt: maintenant,
+        nextReviewAt: maintenant + DEUX_JOURS,
+      })
+      if (reussi && !dejaAcquis) {
+        await emettreEvenement(profil.id, 'skill_validated', { skillId: mod.skillId, score })
+      }
+    } catch (e) {
+      console.error('kamissa : progression non enregistrée', e)
     }
     onFin(score, reussi)
   }
